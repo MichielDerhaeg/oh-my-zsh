@@ -210,6 +210,12 @@ prompt_virtualenv() {
   fi
 }
 
+prompt_nix() {
+  if [[ -n $IN_NIX_SHELL ]]; then
+    prompt_segment blue black "(nix-shell)"
+  fi
+}
+
 # Status:
 # - was there an error
 # - am I root
@@ -229,6 +235,7 @@ build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_virtualenv
+  prompt_nix
   prompt_context
   prompt_dir
   prompt_git
